@@ -1,0 +1,33 @@
+Command	Result	Example	Hint
+Video Introduction	-	-	A video introducing Linux.
+How I am using Linux setup	-	-	Explanation of your Linux setup and workflow.
+Intro of Linux terminal	-	-	Introduction to the Linux terminal.
+How to check Hostname on Linux	Displays the hostname of the system.	hostname	Use the hostname command.
+How to check current login user using whoami	Displays the current logged-in user.	whoami	Use the whoami command.
+How to check IP on Linux	Displays the IP address of the system.	ip addr show	Use the ip addr show command.
+Print Working Directory (pwd)	Displays the current working directory.	pwd	Use the pwd command.
+List directory command (ls)	Lists the contents of a directory.	ls	Use the ls command.
+How to make folder on Linux using mkdir	Creates a new directory.	mkdir new_folder	Use the mkdir command followed by the name of the new folder.
+How to change location or move to another folder	Changes the current working directory.	cd new_folder	Use the cd command followed by the name of the directory you want to move into.
+What is clear command	Clears the terminal screen.	clear	Use the clear command.
+How to search for your folder	Searches for a folder within a directory.	find /path/to/directory -name "folder_name"	Use the find command followed by the directory path and folder name.
+How to use previous used commands in Linux	Repeats the previous command.	Press the Up arrow key	Press the Up arrow key to access previous commands.
+Find folder in a given location	Searches for a folder within a specified location.	find /path/to/location -type d -name "folder_name"	Use the find command with the -type d option to search for directories.
+Wildcard	Represents one or more characters in a filename.	ls *.txt	Use * to represent any number of characters and ? to represent a single character.
+How to create a file in Linux	Creates a new file.	touch new_file.txt	Use the touch command followed by the name of the new file.
+Find file in a given location	Searches for a file within a specified location.	find /path/to/location -type f -name "file_name"	Use the find command with the -type f option to search for files.
+How to delete a folder	Deletes a directory.	rm -r folder_name	Use the rm -r command followed by the name of the directory you want to delete.
+Help or man command use	Displays the manual pages for a command.	man command_name	Use the man command followed by the name of the command you want to learn about.
+How to edit and write into a file	Edits a text file.	nano filename	Use a text editor like nano or vim to open the file for editing.
+Permissions and ownership of files explained	Shows permissions and ownership of files.	ls -l	Use the ls -l command to display detailed information about files.
+How to login as root	Logs in as the root user.	sudo su	Use the sudo su command to switch to the root user.
+How to read a file	Displays the contents of a text file.	cat filename	Use the cat command followed by the name of the file you want to read.
+What is word count command	Counts the number of lines, words, and characters in a file.	wc filename	Use the wc command followed by the name of the file you want to count.
+Compare two files using diff command	Shows the differences between two text files.	diff file1 file2	Use the diff command followed by the names of the files you want to compare.
+Compressing and Decompressing of files (zip unzip)	Compresses and decompresses files or directories.	zip archive.zip file1 file2 unzip archive.zip	Use the zip command to compress files and the unzip command to decompress them.
+How to copy file from one folder to another	Copies files or directories.	cp source_file destination_directory	Use the cp command followed by the source file and destination directory.
+How to rename a file	Renames a file.	mv old_filename new_filename	Use the mv command followed by the old and new filenames.
+How to split and combine the files	Splits or combines files.	split -b size file part_prefix cat part* > combined_file	Use the split command to split files and the cat command to combine them.
+Search words in your file	Searches for specific words in a file.	grep "word" filename	Use the grep command followed by the word you want to search for and the filename.
+Head and tail command	Displays the beginning or end of a file.	head filename tail filename	Use the head command to display the beginning of a file and the tail command to display the end.
+Sorting and Uniq command	Sorts lines of text and removes duplicate lines.	sort filename uniq filename	Use the sort command to sort lines alphabetically and the uniq command to remove duplicate lines.
