@@ -1,147 +1,31 @@
-
-#### "On a UNIX system, everything is a file; if something is not a file, it is a process."
-
-##### Exceptions are:
-- Directories: files that are lists of other files.
-- Special files: the mechanism used for input and output.
-- Links: a system to make a file or directory visible in multiple parts of the system's file tree. 
-- (Domain) sockets: a special file type, similar to TCP/IP sockets, providing inter-process networking
-protected by the file system's access control.
-- Named pipes: act more or less like sockets and form a way for processes to communicate with each
-other, without using network socket semantics.
-
-##### Inode
-```
-Each object in the filesystem is represented by an inode. 
-It has following attributes:
-File type (executable, block special etc)
-Permissions (read, write etc)
-Owner
-Group
-File Size
-File access, change and modification time (remember UNIX or Linux never stores file creation time, this is favorite question asked in UNIX/Linux sys admin job interview)
-File deletion time
-Number of links (soft/hard)
-Extended attribute such as append only or no one can delete file including root user (immutability)
-Access Control List (ACLs)
-
-```
-###### Using inode information
-```
-stat file
-```
-
-##### Common directories and locations:
-
-| Directory            | Description  | 
-|---                   |---|
-| /bin, /sbin, /usr                 |  Applications, services, user apps and libs  | 
-| /dev                 | Device references represented as files  | 
-| /etc                 | System configuration files  |
-| /home/USERNAME, /root  | User's home directories. /root - is for root user |
-| /opt                 | Third party software.   |
-| /proc                | Virtual FS for processes.    |
-| /var                 | Storage for all variable files and temporary files created by users    |
-| /tmp                 | Storage for all variable files and temporary files created by users    |
-
-##### Review the file system of a real production server
-
-#### Navigation and path
-##### Navigation with CD
-```
-cd /full
-cd relative
-cd -
-cd 'my dir'
-cd ~
-```
-##### Full and relative path & $PATH variable
-##### Finding files location
-```
-find . -name "*.tmp"
-find . -size +5000k
-```
-
-#### File System permissions
-##### Understanding permissions
-```
-[username@server groupname]$ ls -lah
-total 12M
-drwxrwxr-x  3 username groupname 4.0K Oct 24 12:37 .
-drwx------ 25 username groupname 4.0K Oct 24 05:28 ..
--rw-rw-r--  1 username groupname  135 Apr 20  2016 asset.hcl
-lrwxrwxrwx  1 username groupname    9 Oct 24 12:37 link -> envconsul
--rwxr-xr-x  1 username groupname  12M Feb 19  2016 envconsul
--rwxr-xr-x  1 root     root      317 Feb  3  2016 runner.sh
-drwxrwxr-x  2 username groupname 4.0K Oct 24 12:36 test
-```
-![Permissions explained](resources/permissions.png)
-
-It is easy to think of the permission settings as a series of bits (which is how the computer thinks about them). Here's how it works:
-
-rwx rwx rwx = 111 111 111
-rw- rw- rw- = 110 110 110
-rwx --- --- = 111 000 000
-
-###### Common permission settings:
-- 777  Anybody may do anything.
-- 755 The file's owner may read, write, and execute the file. All others may read and execute the file. This setting is common for programs that are used by all users.
-- 700 The file's owner may read, write, and execute the file. Nobody else has any rights. This setting is useful for programs that only the owner may use and must be kept private from others.
-- 666 All users may read and write the file.
-- 644 The owner may read and write a file, while all others may only read the file. A common setting for data files that everybody may read, but only the owner may change.
-- 600 The owner may read and write a file. All others have no rights. A common setting for data files that the owner wants to keep private.
-
-##### Changing permissions
-
-```
-chown user: file
-chown :groupname file
-chown user:groupname tmpfile
-
-chmod 711 executable
-chmod -R 755 directory-name/
-```
-
-#### Using links
-When several users or apps need access to the same file, it is possible to create a link to the file 
- A symbolic link points to another file by name and hard link - by inode number.
- 
-```
-ls -i file
-
-ln /root/file1 /root/file2
-ln -s file linktofile
-
-echo "Hello" > file1
-echo "World" > file2
-ln file1 file1-hard
-ln -s file2 file2-soft
-
-
-```
-
-#### Named pipes 
-FIFO opened for reading
-Writer opens FIFO - reader is unlocked, reading process gets EOF
-
-```
-mkfifo testpipe
-sleep 999 > testpipe &
-
-cat testpipe
-cat testpipe
-
-echo "1" > testpipe
-echo "2" > testpipe
-```
-
-#### Using ACLs
-```
-setfacl -m u:nginx:r test
-setfacl -Rm g:testusers:r appdir/
-
-setfacl -x u:nginx test
-runuser -l nginx -c 'ulimit -SHa'
-getfact file
-```
-https://www.centos.org/docs/5/html/Deployment_Guide-en-US/ch-acls.html
+| Command                                            | Result                                                       | Example                                                  | Hint                                                                                              |
+|----------------------------------------------------|--------------------------------------------------------------|----------------------------------------------------------|---------------------------------------------------------------------------------------------------|
+| How to check Hostname on Linux                     | Displays the hostname of the system.                         | hostname                                                 | Use the hostname command.                                                                         |
+| How to check current login user using whoami       | Displays the current logged-in user.                         | whoami                                                   | Use the whoami command.                                                                           |
+| How to check IP on Linux                           | Displays the IP address of the system.                       | ip addr show                                             | Use the ip addr show command.                                                                     |
+| Print Working Directory (pwd)                      | Displays the current working directory.                      | pwd                                                      | Use the pwd command.                                                                              |
+| List directory command (ls)                        | Lists the contents of a directory.                           | ls                                                       | Use the ls command.                                                                               |
+| How to make folder on Linux using mkdir            | Creates a new directory.                                     | mkdir new_folder                                         | Use the mkdir command followed by the name of the new folder.                                     |
+| How to change location or move to another folder   | Changes the current working directory.                       | cd new_folder                                            | Use the cd command followed by the name of the directory you want to move into.                   |
+| What is clear command                              | Clears the terminal screen.                                  | clear                                                    | Use the clear command.                                                                            |
+| How to search for your folder                      | Searches for a folder within a directory.                    | find /path/to/directory -name folder_name                | Use the find command followed by the directory path and folder name.                              |
+| How to use previous used commands in Linux         | Repeats the previous command.                                | Press the Up arrow key                                   | Press the Up arrow key to access previous commands.                                               |
+| Find folder in a given location                    | Searches for a folder within a specified location.           | find /path/to/location -type d -name folder_name         | Use the find command with the -type d option to search for directories.                           |
+| Wildcard                                           | Represents one or more characters in a filename.             | ls *.txt                                                 | Use * to represent any number of characters and ? to represent a single character.                |
+| How to create a file in Linux                      | Creates a new file.                                          | touch new_file.txt                                       | Use the touch command followed by the name of the new file.                                       |
+| Find file in a given location                      | Searches for a file within a specified location.             | find /path/to/location -type f -name file_name           | Use the find command with the -type f option to search for files.                                 |
+| How to delete a folder                             | Deletes a directory.                                         | rm -r folder_name                                        | Use the rm -r command followed by the name of the directory you want to delete.                   |
+| Help or man command use                            | Displays the manual pages for a command.                     | man command_name                                         | Use the man command followed by the name of the command you want to learn about.                  |
+| How to edit and write into a file                  | Edits a text file.                                           | nano filename                                            | Use a text editor like nano or vim to open the file for editing.                                  |
+| Permissions and ownership of files explained       | Shows permissions and ownership of files.                    | ls -l                                                    | Use the ls -l command to display detailed information about files.                                |
+| How to login as root                               | Logs in as the root user.                                    | sudo su                                                  | Use the sudo su command to switch to the root user.                                               |
+| How to read a file                                 | Displays the contents of a text file.                        | cat filename                                             | Use the cat command followed by the name of the file you want to read.                            |
+| What is word count command                         | Counts the number of lines, words, and characters in a file. | wc filename                                              | Use the wc command followed by the name of the file you want to count.                            |
+| Compare two files using diff command               | Shows the differences between two text files.                | diff file1 file2                                         | Use the diff command followed by the names of the files you want to compare.                      |
+| Compressing and Decompressing of files (zip unzip) | Compresses and decompresses files or directories.            | zip archive.zip file1 file2 unzip archive.zip            | Use the zip command to compress files and the unzip command to decompress them.                   |
+| How to copy file from one folder to another        | Copies files or directories.                                 | cp source_file destination_directory                     | Use the cp command followed by the source file and destination directory.                         |
+| How to rename a file                               | Renames a file.                                              | mv old_filename new_filename                             | Use the mv command followed by the old and new filenames.                                         |
+| How to split and combine the files                 | Splits or combines files.                                    | split -b size file part_prefix cat part* > combined_file | Use the split command to split files and the cat command to combine them.                         |
+| Search words in your file                          | Searches for specific words in a file.                       | grep word filename                                       | Use the grep command followed by the word you want to search for and the filename.                |
+| Head and tail command                              | Displays the beginning or end of a file.                     | head filename tail filename                              | Use the head command to display the beginning of a file and the tail command to display the end.  |
+| Sorting and Uniq command                           | Sorts lines of text and removes duplicate lines.             | sort filename uniq filename                              | Use the sort command to sort lines alphabetically and the uniq command to remove duplicate lines. |
