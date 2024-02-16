@@ -7,14 +7,21 @@ as well as explanations on their differences and how to update the mlocate datab
 #### Find Command:
 
 Syntax:``` find [directory] [options] [expression] ```
+
 Example: ```find /home/user -name "*.txt" ```
+
 Explanation: The find command searches for files and directories within the specified directory and its subdirectories. 
+
 It matches files based on criteria such as name, size, permissions, and more.
-Locate Command:
+
+### Locate Command:
 
 Syntax:``` locate [pattern]```
+
 Example:``` locate *.txt```
+
 Explanation: The locate command searches a pre-built database (mlocate database) for files and directories matching the specified pattern.
+
 It provides faster results compared to find but may not be as up-to-date.
 How to Find a File or Directory in Linux using Find or Locate Command:
 
@@ -52,19 +59,12 @@ Limited to searching based on file names.
 
 | Feature             | Find Command                                     | Locate Command                                  |
 |---------------------|--------------------------------------------------|-------------------------------------------------|
-| Real-Time Searching | Performs real-time search of the file system.    | Searches a pre-built database for results.  
-|                                                       
-| Search Criteria     | Provides extensive options for search criteria.  | Limited to searching based on file names.   
-|
-| Speed               | Slower, especially on large file systems.        | Faster, as it retrieves results from database.
-|
-| Recursiveness       | Searches recursively from a specified directory. | Not recursive; searches entire file system.   
-|
-| Recent Files        | Can find recently created or modified files.     | May not show recent files; depends on database.
-|
+| Real-Time Searching | Performs real-time search of the file system.    | Searches a pre-built database for results.      |
+| Search Criteria     | Provides extensive options for search criteria.  | Limited to searching based on file names.       |
+| Speed               | Slower, especially on large file systems.        | Faster, as it retrieves results from database.  |
+| Recursiveness       | Searches recursively from a specified directory. | Not recursive; searches entire file system.     |
+| Recent Files        | Can find recently created or modified files.     | May not show recent files; depends on database. |
 | Usage Examples      | find /path/to/search -name filename              | locate filename                                 |
-
-
 
 
 ### mlocate Database:
