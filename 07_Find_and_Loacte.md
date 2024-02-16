@@ -2,7 +2,7 @@
 Here's a breakdown of the Find and Locate commands in Linux with examples, 
 as well as explanations on their differences and how to update the mlocate database:
 
-#### Linux Find and Locate Command with Examples:
+## Linux Find and Locate Command with Examples:
 
 #### Find Command:
 
@@ -14,7 +14,7 @@ Explanation: The find command searches for files and directories within the spec
 
 It matches files based on criteria such as name, size, permissions, and more.
 
-### Locate Command:
+#### Locate Command:
 
 Syntax:``` locate [pattern]```
 
