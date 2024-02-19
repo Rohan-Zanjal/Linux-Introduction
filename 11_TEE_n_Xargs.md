@@ -67,5 +67,5 @@ In this example:
 
 | Case                                                                        | Description                                 | Command                        |
 |-----------------------------------------------------------------------------|---------------------------------------------|--------------------------------|
-| TEE Command                                                                 | Redirect output to multiple destinations    | `command                       |
-| XARGS Command                                                               | Execute a command with arguments from input | `echo arg1 arg2                |
+| TEE Command                                                                 | Redirect output to multiple destinations    |``` command ```                       |
+| XARGS Command                                                               | Execute a command with arguments from input | ``` echo arg1 arg2```                 |
