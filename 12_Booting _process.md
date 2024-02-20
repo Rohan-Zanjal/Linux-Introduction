@@ -35,32 +35,32 @@ systemd targets.
 
 ###### Here's a brief overview of the traditional runlevels commonly found in Linux distributions:
 
-### Runlevel 0 (Halt/Shut Down):    ``` runlevel0.target``` is a symbolic link to ```poweroff.target```
+#### Runlevel 0 (Halt/Shut Down):    ``` runlevel0.target``` is a symbolic link to ```poweroff.target```
 This runlevel shuts down the system. All processes are terminated, and the system is powered off.
 
-### Runlevel 1 (Single User Mode):   ```runlevel1.target``` is a symbolic link to ```rescue.target```
+#### Runlevel 1 (Single User Mode):   ```runlevel1.target``` is a symbolic link to ```rescue.target```
 Also known as single-user mode or maintenance mode, this runlevel is used for system maintenance tasks.
 It provides a minimal environment with only essential services running,
 typically allowing only the root user to log in. It's often used for troubleshooting and system recovery.
 
-### Runlevel 2 (Multi-User Mode, without Networking):   ```runlevel3.target``` is a symbolic link to ```multi-user.target```
+#### Runlevel 2 (Multi-User Mode, without Networking):   ```runlevel3.target``` is a symbolic link to ```multi-user.target```
 This runlevel is similar to runlevel 3 but does not start networking services. 
 It's suitable for systems that don't require network connectivity, such as standalone servers or workstations.
 
-### Runlevel 3 (Multi-User Mode, with Networking):   ```runlevel3.target``` is a symbolic link to ```multi-user.target```
+#### Runlevel 3 (Multi-User Mode, with Networking):   ```runlevel3.target``` is a symbolic link to ```multi-user.target```
 This is the standard multi-user mode with networking enabled.
 It starts all essential system services, including networking,
 and allows multiple users to log in and use the system concurrently.
 This is the default runlevel for many server-oriented distributions.
 
-### Runlevel 4 (Unused):   ```runlevel3.target ``` is a symbolic link to ```multi-user.target```
+#### Runlevel 4 (Unused):   ```runlevel3.target ``` is a symbolic link to ```multi-user.target```
 Historically, this runlevel was reserved for custom configurations,
 but it's not commonly used in most Linux distributions.
 
-### Runlevel 5 (Graphical Mode):  ``` runlevel5.target ```is a symbolic link to ``` graphical.target```
+#### Runlevel 5 (Graphical Mode):  ``` runlevel5.target ```is a symbolic link to ``` graphical.target```
 This runlevel is similar to runlevel 3 but includes a graphical user interface (GUI) login manager,
 allowing users to log in and interact with the system using a graphical desktop environment.
 
-### Runlevel 6 (Reboot):   ```runlevel6.target``` is a symbolic link to ```reboot.target```
+#### Runlevel 6 (Reboot):   ```runlevel6.target``` is a symbolic link to ```reboot.target```
 This runlevel reboots the system. All processes are terminated, and the system is restarted.
 
